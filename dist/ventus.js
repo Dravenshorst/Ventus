@@ -1210,6 +1210,7 @@ define('ventus/wm/window', [
                     y: event.pageY
                 });
                 this.el.addClass('move');
+                this._space[0].classList.add('disable-events');
                 e.preventDefault();
             }
         },
@@ -1273,6 +1274,7 @@ define('ventus/wm/window', [
                         height: this.height - event.pageY
                     };
                     this.el.addClass('resizing');
+                    this._space[0].classList.add('disable-events');
                     e.preventDefault();
                 }
             },
@@ -1312,10 +1314,12 @@ define('ventus/wm/window', [
         },
         _stopMove: function () {
             this.el.removeClass('move');
+            this._space[0].classList.remove('disable-events');
             this._moving = null;
         },
         _stopResize: function () {
             this.el.removeClass('resizing');
+            this._space[0].classList.remove('disable-events');
             this._restore = null;
             this._resizing = null;
         },
